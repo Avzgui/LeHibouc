@@ -1,17 +1,19 @@
-cops
-====
+#Le Hibouc
+##The Online Communal E-books Library
 
-Calibre OPDS (and HTML) PHP Server : light alternative to Calibre content server / Calibre2OPDS
+###Description
 
-See : [COPS's home](http://blog.slucas.fr/en/oss/calibre-opds-php-server) for more details.
+Le Hibouc is an open source project of an online communal library
+where everyone who likes to read books can comes, reads and share.
 
-Don't forget to check the [Wiki](https://github.com/seblucas/cops/wiki).
+###Quick Start
 
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/seblucas/cops/badges/quality-score.png?s=e1c87a92ef90b8d666cd9bd4f3612bd10db84364)](https://scrutinizer-ci.com/g/seblucas/cops/)
+If you want to contribuate at Le Hibouc's project just clone the
+repository, create a directory call 'library' and clone your
+Calibre's library in. If you don't have one just install Calibre
+and download some free e-books ;)
 
-[![Code Coverage](https://scrutinizer-ci.com/g/seblucas/cops/badges/coverage.png?s=1e21d8c3bf96d7b0b7cc0e54429fa897ddea1506)](https://scrutinizer-ci.com/g/seblucas/cops/)
-
-[![Build Status](https://travis-ci.org/seblucas/cops.png)](https://travis-ci.org/seblucas/cops)
-
-[![Selenium Test Status](https://saucelabs.com/browser-matrix/seblucas.svg)](https://saucelabs.com/u/seblucas)
+###Contributor
+Antoine "Avzgui" Richard and Jérémy Ferrer, students at the
+Claude Bernard University Lyon 1 (FRANCE) 
 
