@@ -1,9 +1,9 @@
 #Le Hibouc
-##The Online Communal E-books Library
+##The Online Community Library
 
 ###Description
 
-Le Hibouc is an open source project of an online communal library
+Le Hibouc is an open source project of an online community library
 where everyone who likes to read books can comes, reads and share.
 
 ###Quick Start
