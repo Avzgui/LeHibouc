@@ -46,6 +46,7 @@
     header ("Content-Type:text/html;charset=utf-8");
 
     $data = array("title"                 => $config['cops_title_default'],
+                  "subtitle"                 => $config['cops_subtitle_default'],
                   "version"               => VERSION,
                   "opds_url"              => $config['cops_full_url'] . "feed.php",
                   "customHeader"          => "",

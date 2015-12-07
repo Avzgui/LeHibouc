@@ -136,6 +136,7 @@ header {
     display:inline-block;
     color:lightgray;
     text-align: center;
+    vertical-align: middle;
     margin: 0 2px;
 }
 
@@ -169,11 +170,18 @@ header {
 float:none;
 margin:auto;
 text-align:center;
-height:70px;
+height:75px;
 display:table;
 }
 
 header h1{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 100%;
+}
+
+header h2{
     display: table-cell;
     vertical-align: middle;
     text-align: center;
