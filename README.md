@@ -14,6 +14,13 @@ Calibre's library in. If you don't have one just install Calibre
 and download some free e-books ;)
 
 ###Contributor
+
 Antoine "Avzgui" Richard and Jérémy Ferrer, students at the
-Claude Bernard University Lyon 1 (FRANCE) 
+Claude Bernard University Lyon 1 (FRANCE)
+
+###Acknowledgment
+
+Currently, Le Hibouc's project is strongly inspired by the
+work of Sébastien Lucas (@seblucas) on his project COPS : Calibre 
+OPDS (and HTML) PHP Server.
 
