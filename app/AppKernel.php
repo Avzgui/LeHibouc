@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Avzgui\LeHiboucBundle\LeHiboucBundle(),
             new TestBundle\TestBundle(),
+            new HelloBundle\HelloBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

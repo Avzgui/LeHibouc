@@ -1,9 +1,5 @@
-test:
-    resource: "@TestBundle/Resources/config/routing.yml"
-    prefix:   /
-
-le_hibouc:
-    resource: "@LeHiboucBundle/Resources/config/routing.xml"
+hello:
+    resource: "@HelloBundle/Resources/config/routing.yml"
     prefix:   /
 
 app:

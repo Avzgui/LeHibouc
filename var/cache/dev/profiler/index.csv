@@ -43,3 +43,5 @@ ab9846,127.0.0.1,GET,http://lehibouc.com/hello/truc,1449667007,02314b,200
 4f8e1d,127.0.0.1,GET,http://lehibouc.com/hello/,1449667947,,404
 7147f5,127.0.0.1,GET,http://lehibouc.com/hello/machin,1449667953,a1ff5e,200
 a1ff5e,127.0.0.1,GET,http://lehibouc.com/hello/machin,1449667953,,500
+a97791,127.0.0.1,GET,http://lehibouc.com/,1449670495,,200
+8515d3,127.0.0.1,GET,http://lehibouc.com/,1449670608,,200
