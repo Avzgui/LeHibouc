@@ -1,0 +1,11 @@
+test:
+    resource: "@TestBundle/Resources/config/routing.yml"
+    prefix:   /
+
+le_hibouc:
+    resource: "@LeHiboucBundle/Resources/config/routing.xml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
