@@ -1,0 +1,4 @@
+services:
+#    e_book_library.example:
+#        class: EBookLibraryBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

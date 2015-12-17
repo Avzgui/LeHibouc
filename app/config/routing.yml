@@ -1,3 +1,7 @@
+e_book_library:
+    resource: "@EBookLibraryBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
