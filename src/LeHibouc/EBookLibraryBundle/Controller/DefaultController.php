@@ -1,6 +1,6 @@
 <?php
 
-namespace EBookLibraryBundle\Controller;
+namespace LeHibouc\EBookLibraryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
