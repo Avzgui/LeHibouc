@@ -1,3 +1,7 @@
+ktbs:
+    resource: "@KtbsBundle/Resources/config/routing.yml"
+    prefix:   /
+
 e_book_library:
     resource: "@EBookLibraryBundle/Resources/config/routing.yml"
     prefix:   /

@@ -17,6 +17,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new LeHibouc\AppBundle\AppBundle(),
             new LeHibouc\EBookLibraryBundle\EBookLibraryBundle(),
+            new LeHibouc\KtbsBundle\KtbsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

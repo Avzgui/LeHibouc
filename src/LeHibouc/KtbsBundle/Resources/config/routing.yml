@@ -1,0 +1,3 @@
+ktbs_homepage:
+    path:     /ktbs/
+    defaults: { _controller: KtbsBundle:Default:index }
