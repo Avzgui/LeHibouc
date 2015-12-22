@@ -2,6 +2,16 @@
 
 {% extends "AppBundle::layout.html.twig" %}
 
-{% block body %}
+{% block left_menu %}
+	<ul class="nav nav-pills nav-stacked">
+  		<li>Accueil</li>
+  		<li>Rechercher un livre</li>
+	</ul>
+
+	<h4>Nouveauté</h4>
+	{# render(controller("EBookLibraryBundle:Default:news", {'limit': 3})) #}
+{% endblock %}
+
+{% block middle_body %}
   {{ render(controller("EBookLibraryBundle:Default:index")) }}
 {% endblock %}
