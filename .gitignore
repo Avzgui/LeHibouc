@@ -40,4 +40,4 @@
 /composer.phar
 
 # Ebooks' library
-library/
+/library/
