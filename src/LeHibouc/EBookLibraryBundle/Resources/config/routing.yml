@@ -1,3 +1,15 @@
 library_homepage:
-    path:     /library/
+    path:     /
     defaults: { _controller: EBookLibraryBundle:Default:index }
+
+library_book:
+    path:     /book/{title}
+    defaults: { _controller: EBookLibraryBundle:Default:viewBook }
+
+library_author:
+    path:     /author/{name}
+    defaults: { _controller: EBookLibraryBundle:Default:viewAuthor }
+
+library_add:
+    path:     /add
+    defaults: { _controller: EBookLibraryBundle:Default:viewAuthor }

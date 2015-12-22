@@ -6,12 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Author
+ * Book
  *
- * @ORM\Table(name="author")
- * @ORM\Entity(repositoryClass="LeHibouc\EBookLibraryBundle\Repository\AuthorRepository")
+ * @ORM\Table(name="book")
+ * @ORM\Entity(repositoryClass="LeHibouc\EBookLibraryBundle\Repository\BookRepository")
  */
-class Author
+class Book
 {
     /**
      * @var int
@@ -25,9 +25,9 @@ class Author
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255)
      */
-    private $name;
+    private $title;
 
     /**
      * @var string
@@ -37,7 +37,14 @@ class Author
     private $descr;
 
     /**
-     * @Gedmo\Slug(fields={"name"})
+     * @var string
+     *
+     * @ORM\Column(name="epub_file", type="string", length=255)
+     */
+    private $epubFile;
+
+    /**
+     * @Gedmo\Slug(fields={"title"})
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;
@@ -54,27 +61,27 @@ class Author
     }
 
     /**
-     * Set name
+     * Set title
      *
-     * @param string $name
+     * @param string $title
      *
-     * @return Author
+     * @return Book
      */
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->name = $name;
+        $this->title = $title;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get title
      *
      * @return string
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
+        return $this->title;
     }
 
     /**
@@ -82,7 +89,7 @@ class Author
      *
      * @param string $descr
      *
-     * @return Author
+     * @return Book
      */
     public function setDescr($descr)
     {
@@ -102,26 +109,27 @@ class Author
     }
 
     /**
-     * Set slug
+     * Set epubFile
      *
-     * @param string $slug
+     * @param string $epubFile
      *
-     * @return Author
+     * @return Book
      */
-    public function setSlug($slug)
+    public function setEpubFile($epubFile)
     {
-        $this->slug = $slug;
+        $this->epubFile = $epubFile;
 
         return $this;
     }
 
     /**
-     * Get slug
+     * Get epubFile
      *
      * @return string
      */
-    public function getSlug()
+    public function getEpubFile()
     {
-        return $this->slug;
+        return $this->epubFile;
     }
 }
+
