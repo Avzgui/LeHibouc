@@ -1,10 +1,10 @@
 library_homepage:
-    path:     /
-    defaults: { _controller: EBookLibraryBundle:Default:index }
-
-library_books:
-    path:     /book
-    defaults: {_controller: EBookLibraryBundle:Default:viewBooks}
+    path:     /{page}
+    defaults: 
+        _controller: EBookLibraryBundle:Default:index
+        page:        1
+    requirements:
+        page: \d+
 
 library_book:
     path:     /book/{slug}

@@ -11,9 +11,33 @@ use LeHibouc\EBookLibraryBundle\Form\BookType;
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+    public function indexAction($page)
     {
-        return $this->render('EBookLibraryBundle:Default:index.html.twig');
+        if ($page < 1) {
+          throw $this->createNotFoundException("Page ".$page." doesn't exist.");
+        }
+
+        $nbPerPage = 3;
+
+        //Paginator
+        $list = $this->getDoctrine()
+          ->getManager()
+          ->getRepository('EBookLibraryBundle:Book')
+          ->getAdverts($page, $nbPerPage)
+        ;
+
+        $nbPages = ceil(count($list)/$nbPerPage);
+
+        // If page doesn't exist -> 404
+        if ($nbPages != 0 && $page > $nbPages) {
+          throw $this->createNotFoundException("Page ".$page." doesn't exist.");
+        }
+
+        return $this->render('EBookLibraryBundle:Default:index.html.twig', array(
+          'list' => $list,
+          'nbPages'     => $nbPages,
+          'page'        => $page
+        ));
     }
 
     public function addBookAction(Request $request)
@@ -40,11 +64,6 @@ class DefaultController extends Controller
     public function viewBookAction($slug, Request $request)
     {
     	return new Response("TODO ! (book)");
-    }
-
-    public function viewBooksAction(Request $request)
-    {
-    	return new Response("TODO ! (books)");
     }
 
     public function latestAction($limit = 3)
