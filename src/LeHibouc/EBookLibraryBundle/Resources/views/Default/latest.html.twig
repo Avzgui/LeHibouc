@@ -1,0 +1,11 @@
+{# src/LeHibouc/EBookLibraryBundle/Resources/views/LeHibouc/latest.html.twig #}
+
+<ul class="nav nav-pills nav-stacked">
+  {% for book in list %}
+    <li>
+      <a href="{{ path('library_book', {'slug': book.slug}) }}">
+        {{ book.title }}, </br> by {{ book.author }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>

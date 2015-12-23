@@ -51,6 +51,13 @@ class Book
     private $year;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+    /**
      * @ORM\OneToOne(targetEntity="LeHibouc\EBookLibraryBundle\Entity\EpubFile", cascade={"persist", "remove"})
      */
     private $epubFile;
@@ -61,6 +68,11 @@ class Book
      */
     private $slug;
 
+    public function __construct()
+    {
+        $this->date         = new \Datetime();
+    }
+  
 
     /**
      * Get id

@@ -9,7 +9,7 @@
 	</ul>
 
 	<h4>Nouveauté</h4>
-	{# render(controller("EBookLibraryBundle:Default:news", {'limit': 3})) #}
+	{{ render(controller("EBookLibraryBundle:Default:latest", {'limit': 3})) }}
 {% endblock %}
 
 {% block middle_body %}

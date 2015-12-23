@@ -37,15 +37,30 @@ class DefaultController extends Controller
 	    ));
     }
     
-    //*
-    public function viewBookAction($slug)
+    public function viewBookAction($slug, Request $request)
     {
     	return new Response("TODO ! (book)");
     }
 
-    public function viewBooksAction()
+    public function viewBooksAction(Request $request)
     {
     	return new Response("TODO ! (books)");
     }
-    //*/
+
+    public function latestAction($limit = 3)
+    {
+        $list = $this->getDoctrine()
+          ->getManager()
+          ->getRepository('EBookLibraryBundle:Book')
+          ->findBy(
+            array(),
+            array('date' => 'desc'),
+            $limit,
+            0
+        );
+
+        return $this->render('EBookLibraryBundle:Default:latest.html.twig', array(
+          'list' => $list
+        ));
+    }
 }
