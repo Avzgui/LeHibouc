@@ -22,6 +22,7 @@ class DefaultController extends Controller
 	    $form = $this->get('form.factory')->create(new BookType(), $book);
 
 	    if ($form->handleRequest($request)->isValid()) {
+
 	      $em = $this->getDoctrine()->getManager();
 	      $em->persist($book);
 	      $em->flush();

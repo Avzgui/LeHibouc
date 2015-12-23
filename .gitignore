@@ -38,6 +38,3 @@
 
 # Composer PHAR
 /composer.phar
-
-# Ebooks' library
-/library/

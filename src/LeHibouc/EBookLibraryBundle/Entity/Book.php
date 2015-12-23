@@ -60,7 +60,7 @@ class Book
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;
-
+  
 
     /**
      * Get id
