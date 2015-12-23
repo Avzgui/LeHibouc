@@ -13,19 +13,18 @@ class DefaultController extends Controller
         return $this->render('EBookLibraryBundle:Default:index.html.twig');
     }
 
-
     public function addBookAction()
     {
-    	return new Response("Hello World ! (add)");
+    	return new Response("TODO ! (add)");
     }
     
     public function viewBookAction($slug)
     {
-    	return new Response("Hello World ! (book)");
+    	return new Response("TODO ! (book)");
     }
 
     public function viewBooksAction()
     {
-    	return new Response("Hello World ! (books)");
+    	return new Response("TODO ! (books)");
     }
 }
