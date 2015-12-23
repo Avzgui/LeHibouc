@@ -18,9 +18,9 @@ class BookType extends AbstractType
             ->add('title')
             ->add('author')
             ->add('description')
-            ->add('date', 'datetime')
+            ->add('year')
             ->add('epubFile')
-            ->add('slug')
+            ->add('save', 'submit')
         ;
     }
     

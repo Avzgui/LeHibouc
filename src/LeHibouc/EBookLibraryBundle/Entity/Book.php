@@ -44,11 +44,11 @@ class Book
     private $description;
 
     /**
-     * @var \DateTime
+     * @var integer
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="year", type="integer")
      */
-    private $date;
+    private $year;
 
     /**
      * @var string
@@ -147,30 +147,6 @@ class Book
     }
 
     /**
-     * Set date
-     *
-     * @param \DateTime $date
-     *
-     * @return Book
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
      * Set slug
      *
      * @param string $slug
@@ -216,5 +192,29 @@ class Book
     public function getEpubFile()
     {
         return $this->epubFile;
+    }
+
+    /**
+     * Set year
+     *
+     * @param integer $year
+     *
+     * @return Book
+     */
+    public function setYear($year)
+    {
+        $this->year = $year;
+
+        return $this;
+    }
+
+    /**
+     * Get year
+     *
+     * @return integer
+     */
+    public function getYear()
+    {
+        return $this->year;
     }
 }
