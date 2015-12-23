@@ -51,9 +51,7 @@ class Book
     private $year;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="epub_file", type="string", length=255)
+     * @ORM\OneToOne(targetEntity="LeHibouc\EBookLibraryBundle\Entity\EpubFile", cascade={"persist", "remove"})
      */
     private $epubFile;
 
