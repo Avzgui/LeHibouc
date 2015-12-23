@@ -2,14 +2,16 @@ library_homepage:
     path:     /
     defaults: { _controller: EBookLibraryBundle:Default:index }
 
-library_book:
-    path:     /book/{title}
-    defaults: { _controller: EBookLibraryBundle:Default:viewBook }
+library_books:
+    path:     /book
+    defaults: {_controller: EBookLibraryBundle:Default:viewBooks}
 
-library_author:
-    path:     /author/{name}
-    defaults: { _controller: EBookLibraryBundle:Default:viewAuthor }
+library_book:
+    path:     /book/{slug}
+    defaults: {_controller: EBookLibraryBundle:Default:viewBook}
+    requirements:
+        page: \d+
 
 library_add:
     path:     /add
-    defaults: { _controller: EBookLibraryBundle:Default:viewAuthor }
+    defaults: { _controller: EBookLibraryBundle:Default:addBook }

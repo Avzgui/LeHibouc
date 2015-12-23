@@ -32,9 +32,23 @@ class Book
     /**
      * @var string
      *
-     * @ORM\Column(name="descr", type="text")
+     * @ORM\Column(name="author", type="string", length=255)
      */
-    private $descr;
+    private $author;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
 
     /**
      * @var string
@@ -85,51 +99,98 @@ class Book
     }
 
     /**
-     * Set descr
+     * Set author
      *
-     * @param string $descr
+     * @param string $author
      *
      * @return Book
      */
-    public function setDescr($descr)
+    public function setAuthor($author)
     {
-        $this->descr = $descr;
+        $this->author = $author;
 
         return $this;
     }
 
     /**
-     * Get descr
+     * Get author
      *
      * @return string
      */
-    public function getDescr()
+    public function getAuthor()
     {
-        return $this->descr;
+        return $this->author;
     }
 
     /**
-     * Set epubFile
+     * Set description
      *
-     * @param string $epubFile
+     * @param string $description
      *
      * @return Book
      */
-    public function setEpubFile($epubFile)
+    public function setDescription($description)
     {
-        $this->epubFile = $epubFile;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get epubFile
+     * Get description
      *
      * @return string
      */
-    public function getEpubFile()
+    public function getDescription()
     {
-        return $this->epubFile;
+        return $this->description;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Book
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Book
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
-
