@@ -2,52 +2,27 @@
 
 {% extends "::layout.html.twig" %}
 
-{% block body %}
-  <div class="container">
-    <div id="header" class="jumbotron">
-      <h1>Le Hibouc</h1>
-      <p>
-        The Online Community Library
-      </p>
-    </div>
+{% block menu %}
+  <h4> Hello 
+      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+          {{ app.user.username }}
+      {% else %}
+          Visitor
+      {% endif %}
+      !
+  </h4>
 
-    <div class="row">
-      <div id="menu" class="col-md-3">
-      	{% block left_menu %}
-          <h4> Hello 
-              {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                  {{ app.user.username }}
-              {% else %}
-                  Visitor
-              {% endif %}
-              !
-          </h4>
+  <ul class="nav nav-pills nav-stacked">
+      <li><a href="{{ path('app_homepage') }}">Home</a></li>
+      <li><a href="{{ path('library_homepage') }}">Library</a></li>
+      <li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+          <a href="{{ path('library_add') }}">Add a book</a></li>
+          <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+      {% else %}
+          <a href="{{ path('fos_user_security_login') }}">Login</a>
+      {% endif %}</li>
+  </ul>
 
-          <ul class="nav nav-pills nav-stacked">
-              <li><a href="{{ path('app_homepage') }}">Home</a></li>
-              <li><a href="{{ path('library_homepage') }}">Library</a></li>
-              <li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                  <a href="{{ path('library_add') }}">Add a book</a></li>
-                  <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
-              {% else %}
-                  <a href="{{ path('fos_user_security_login') }}">Login</a>
-              {% endif %}</li>
-          </ul>
-
-          <h4>Latest books uploaded</h4>
-          {{ render(controller("EBookLibraryBundle:Default:latest", {'limit': 3})) }}
-        {% endblock %}
-      </div>
-      <div id="content" class="col-md-9">
-        {% block middle_body %}
-        {% endblock %}
-      </div>
-    </div>
-
-    <hr>
-    <footer>
-      <p>Le Hibouc <img src="copyleft.svg" alt="copyleft" style="width:12px;height:12px;"> {{ 'now'|date('Y') }} and beyond.</p>
-    </footer>
-  </div>
-
+  <h4>Latest books uploaded</h4>
+  {{ render(controller("EBookLibraryBundle:Default:latest", {'limit': 3})) }}
 {% endblock %}

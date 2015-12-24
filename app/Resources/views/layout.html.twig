@@ -14,15 +14,36 @@
   {% endblock %}
 </head>
 
-<body>
-  {% block body %}
-  {% endblock %}
+  <body>
+    <div class="container">
+      <div id="header" class="jumbotron">
+        <h1>Le Hibouc</h1>
+        <p>
+          The Online Community Library
+        </p>
+      </div>
 
-  {% block javascripts %}
-    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  {% endblock %}
+      <div class="row">
+        <div id="menu" class="col-md-3">
+          {% block menu %}
+          {% endblock %}
+        </div>
+        <div id="content" class="col-md-9">
+          {% block body %}
+          {% endblock %}
+        </div>
+      </div>
+      <hr>
+      <footer>
+        <p>Le Hibouc <img src="copyleft.svg" alt="copyleft" style="width:12px;height:12px;"> {{ 'now'|date('Y') }} and beyond.</p>
+      </footer>
+    </div>
 
-</body>
+    {% block javascripts %}
+      {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    {% endblock %}
+
+  </body>
 </html>
