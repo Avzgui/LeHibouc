@@ -2,17 +2,6 @@
 
 {% extends "AppBundle::layout.html.twig" %}
 
-{% block left_menu %}
-	<ul class="nav nav-pills nav-stacked">
-  		<li><a href="{{ path('app_homepage') }}">Home</a></li>
-  		<li><a href="{{ path('library_add') }}">Add a book</a></li>
-  		<li>Search (TODO)</li>
-	</ul>
-
-	<h4>Latest books uploaded</h4>
-	{{ render(controller("EBookLibraryBundle:Default:latest", {'limit': 3})) }}
-{% endblock %}
-
 {% block middle_body %}
-  {{ render(controller("EBookLibraryBundle:Default:index", {'page': 1})) }}
+	TODO
 {% endblock %}

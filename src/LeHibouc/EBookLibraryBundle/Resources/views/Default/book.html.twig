@@ -1,5 +1,9 @@
 {# src/LeHibouc/EBookLibraryBundle/Resources/views/Default/book.html.twig #}
 
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block middle_body %}
+
 <h2> {{ book.title }} </h2>
 <h3> by {{ book.author }} </h3>
 
@@ -7,3 +11,5 @@
 
 <h5> Abstract : </h5>
 <p> {{ book.abstract }} </p>
+
+{% endblock %}

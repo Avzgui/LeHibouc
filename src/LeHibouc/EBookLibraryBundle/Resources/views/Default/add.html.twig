@@ -1,7 +1,11 @@
 {# src/LeHibouc/EBookLibraryBundle/Resources/views/Default/add.html.twig #}
 
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block middle_body %}
 
 <h2>Add a book</h2>
 
 {{ include("EBookLibraryBundle:Default:form.html.twig") }}
 
+{% endblock %}
