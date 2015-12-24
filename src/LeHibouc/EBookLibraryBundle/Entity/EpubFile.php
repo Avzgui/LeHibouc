@@ -3,7 +3,7 @@
 namespace LeHibouc\EBookLibraryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -34,7 +34,14 @@ class EpubFile
      */
     private $alt;
 
+    /**
+     * @Assert\File(
+     *      mimeTypes = {"application/epub+zip"},
+     *      mimeTypesMessage = "Please upload a valid Epub file"
+     * )
+     */
     private $file;
+    
     private $tempFilename;
 
     /**

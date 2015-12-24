@@ -4,12 +4,15 @@ namespace LeHibouc\EBookLibraryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Book
  *
  * @ORM\Table(name="book")
  * @ORM\Entity(repositoryClass="LeHibouc\EBookLibraryBundle\Repository\BookRepository")
+ * @UniqueEntity(fields="title", message="A book with the same title was already uploaded.")
  */
 class Book
 {
@@ -25,7 +28,8 @@ class Book
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255, unique=true)
+     * @Assert\Length(min=10)
      */
     private $title;
 
@@ -33,6 +37,7 @@ class Book
      * @var string
      *
      * @ORM\Column(name="author", type="string", length=255)
+     * @Assert\Length(min=10)
      */
     private $author;
 
@@ -40,15 +45,25 @@ class Book
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank()
      */
-    private $description;
+    private $abstract;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="year", type="integer")
+     * @Assert\NotBlank()
      */
     private $year;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="language", type="string", length=255)
+     * @Assert\Language()
+     */
+    private $language;
 
     /**
      * @var \DateTime
@@ -59,6 +74,7 @@ class Book
 
     /**
      * @ORM\OneToOne(targetEntity="LeHibouc\EBookLibraryBundle\Entity\EpubFile", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $epubFile;
 
@@ -68,9 +84,10 @@ class Book
      */
     private $slug;
 
+
     public function __construct()
     {
-        $this->date         = new \Datetime();
+        $this->date = new \Datetime();
     }
   
 
@@ -130,30 +147,6 @@ class Book
     public function getAuthor()
     {
         return $this->author;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Book
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
     }
 
     /**
@@ -250,5 +243,53 @@ class Book
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set abstract
+     *
+     * @param string $abstract
+     *
+     * @return Book
+     */
+    public function setAbstract($abstract)
+    {
+        $this->abstract = $abstract;
+
+        return $this;
+    }
+
+    /**
+     * Get abstract
+     *
+     * @return string
+     */
+    public function getAbstract()
+    {
+        return $this->abstract;
+    }
+
+    /**
+     * Set language
+     *
+     * @param string $language
+     *
+     * @return Book
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return $this->language;
     }
 }

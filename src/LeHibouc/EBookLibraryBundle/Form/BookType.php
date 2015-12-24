@@ -17,7 +17,8 @@ class BookType extends AbstractType
         $builder
             ->add('title')
             ->add('author')
-            ->add('description')
+            ->add('language')
+            ->add('abstract')
             ->add('year')
             ->add('EpubFile', new EpubFileType())
             ->add('save', 'submit')
