@@ -1,3 +1,7 @@
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 ktbs:
     resource: "@KtbsBundle/Resources/config/routing.yml"
     prefix:   /
@@ -9,3 +13,13 @@ e_book_library:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+login:
+    pattern:   /login
+    defaults:  { _controller: UserBundle:Security:login }
+
+login_check:
+    pattern:   /login_check
+
+logout:
+    pattern:   /logout
