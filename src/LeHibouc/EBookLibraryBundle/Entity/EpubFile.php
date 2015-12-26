@@ -209,4 +209,14 @@ class EpubFile
     {
         return $this->alt;
     }
+
+    public function getFilePath()
+    {
+        return $this->getUploadDir().'/'.$this->getId().'.'.$this->getUrl();
+    }
+
+    public function getAbsoluteFilePath()
+    {
+        return $this->getUploadRootDir().'/'.$this->getId().'.'.$this->getUrl();;
+    }
 }

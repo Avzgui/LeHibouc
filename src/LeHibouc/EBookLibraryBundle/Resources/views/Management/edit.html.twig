@@ -4,8 +4,17 @@
 
 {% block library_content %}
 
-	<h2>Edit a book</h2>
+	<h2>Edit Book : {{ book.title }}</h2>
 
-	TODO
+	<h3> File : {{ book.getEpubFile().getAbsoluteFilePath() }} </h3>
+
+	{{ include("EBookLibraryBundle:Management:form.html.twig") }}
+
+	<p>
+		<a href="{{ path('library_book', {'slug': book.slug}) }}" class="btn btn-default">
+		  <i class="glyphicon glyphicon-chevron-left"></i>
+		  Cancel
+		</a> 
+	</p>
 
 {% endblock %}
