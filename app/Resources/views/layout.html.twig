@@ -25,8 +25,11 @@
 
       <div class="row">
         <div id="menu" class="col-md-3">
-          {% block menu %}
-          {% endblock %}
+            {{ render(controller("UserBundle:Default:menu")) }}
+
+            <h4>Latest books uploaded</h4>
+
+            {{ render(controller("EBookLibraryBundle:Default:latest", {'limit': 3})) }}
         </div>
         <div id="content" class="col-md-9">
           {% block body %}
