@@ -1,19 +1,15 @@
 {# src/LeHibouc/AppBundle/Resources/views/Default/menu.html.twig #}
 
-<h4> Hello 
-    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+<h4> What would you like to do{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %},
         {{ app.user.username }}
-    {% else %}
-        Visitor
     {% endif %}
-    !
+    ?
 </h4>
 
 <ul class="nav nav-pills nav-stacked">
     <li><a href="{{ path('app_homepage') }}">Home</a></li>
     <li><a href="{{ path('library_homepage') }}">Library</a></li>
     <li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        <a href="{{ path('library_add_book') }}">Add a book</a></li>
         <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
     {% else %}
         <a href="{{ path('fos_user_security_login') }}">Login</a>
