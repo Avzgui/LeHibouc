@@ -1,6 +1,6 @@
 <?php
 
-namespace LeHibouc\UserBundle\Tests\Controller;
+namespace LeHibouc\AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

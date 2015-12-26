@@ -4,7 +4,6 @@ imports:
     - { resource: services.yml }
     - { resource: "@EBookLibraryBundle/Resources/config/services.yml" }
     - { resource: "@KtbsBundle/Resources/config/services.yml" }
-    - { resource: "@UserBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -79,4 +78,4 @@ stof_doctrine_extensions:
 fos_user:
     db_driver:     orm
     firewall_name: main
-    user_class:    LeHibouc\UserBundle\Entity\User
+    user_class:    LeHibouc\AppBundle\Entity\User

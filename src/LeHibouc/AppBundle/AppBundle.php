@@ -1,10 +1,10 @@
 <?php
 
-namespace LeHibouc\UserBundle;
+namespace LeHibouc\AppBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class UserBundle extends Bundle
+class AppBundle extends Bundle
 {
 	public function getParent()
 	{

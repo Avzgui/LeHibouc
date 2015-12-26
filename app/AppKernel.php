@@ -17,7 +17,7 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new LeHibouc\UserBundle\UserBundle(),
+            new LeHibouc\AppBundle\AppBundle(),
             new LeHibouc\EBookLibraryBundle\EBookLibraryBundle(),
             new LeHibouc\KtbsBundle\KtbsBundle(),
         );

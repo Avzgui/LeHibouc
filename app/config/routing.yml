@@ -1,5 +1,5 @@
 user:
-    resource: "@UserBundle/Resources/config/routing.yml"
+    resource: "@AppBundle/Resources/config/routing.yml"
     prefix:   /
 
 ktbs:
@@ -11,7 +11,7 @@ e_book_library:
     prefix:   /library
 
 app:
-    resource: "@UserBundle/Controller/"
+    resource: "@AppBundle/Controller/"
     type:     annotation
 
 fos_user_security:

@@ -1,6 +1,6 @@
 <?php
 
-namespace LeHibouc\UserBundle\Controller;
+namespace LeHibouc\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -8,11 +8,11 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('UserBundle:Default:index.html.twig');
+        return $this->render('AppBundle:Default:index.html.twig');
     }
 
     public function menuAction()
     {
-    	return $this->render('UserBundle:Default:menu.html.twig');
+    	return $this->render('AppBundle:Default:menu.html.twig');
     }
 }

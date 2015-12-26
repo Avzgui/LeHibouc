@@ -1,6 +1,6 @@
 <?php
 
-namespace LeHibouc\UserBundle\Repository;
+namespace LeHibouc\AppBundle\Repository;
 
 /**
  * UserRepository
