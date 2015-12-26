@@ -12,6 +12,18 @@ library_book:
     requirements:
         page: \d+
 
-library_add:
-    path:     /add
+library_add_book:
+    path:     /add/book
     defaults: { _controller: EBookLibraryBundle:Management:addBook }
+
+library_edit_book:
+    path:     /book/{slug}/edit
+    defaults: { _controller: EBookLibraryBundle:Management:editBook }
+    requirements:
+        page: \d+
+
+library_delete_book:
+    path:     /book/{slug}/delete
+    defaults: { _controller: EBookLibraryBundle:Management:deleteBook }
+    requirements:
+        page: \d+

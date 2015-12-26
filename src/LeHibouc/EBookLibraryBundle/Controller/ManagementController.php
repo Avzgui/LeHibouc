@@ -15,6 +15,9 @@ use LeHibouc\EBookLibraryBundle\Form\BookType;
  */
 class ManagementController extends Controller
 {
+
+    /* --- Books Management --- */
+
     public function addBookAction(Request $request)
     {
     	$book = new Book();
@@ -35,4 +38,24 @@ class ManagementController extends Controller
 	      'form' => $form->createView(),
 	    ));
     }
+
+    public function editBookAction($slug, Request $request)
+    {
+        //Find the book
+        $em = $this->getDoctrine()->getManager();
+        $book = $em->getRepository('EBookLibraryBundle:Book')->findOneBySlug($slug);
+
+        return $this->render('EBookLibraryBundle:Management:edit.html.twig');
+    }
+
+    public function deleteBookAction($slug, Request $request)
+    {
+        //Find the book
+        $em = $this->getDoctrine()->getManager();
+        $book = $em->getRepository('EBookLibraryBundle:Book')->findOneBySlug($slug);
+        
+        return $this->render('EBookLibraryBundle:Management:delete.html.twig');
+    }
+
+    /* --- Authors Management (TODO later) --- */
 }
