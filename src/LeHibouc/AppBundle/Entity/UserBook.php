@@ -58,6 +58,7 @@ class UserBook
     public function __construct()
     {
         $this->borrow = new \DateTime('now');
+        $this->returned = null;
     }
 
     /**
