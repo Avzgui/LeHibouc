@@ -14,4 +14,4 @@ library_book:
 
 library_add:
     path:     /add
-    defaults: { _controller: EBookLibraryBundle:Default:addBook }
+    defaults: { _controller: EBookLibraryBundle:Management:addBook }
