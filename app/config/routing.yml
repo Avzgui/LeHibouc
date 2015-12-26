@@ -11,7 +11,7 @@ e_book_library:
     prefix:   /library
 
 app:
-    resource: "@AppBundle/Controller/"
+    resource: "@UserBundle/Controller/"
     type:     annotation
 
 fos_user_security:
