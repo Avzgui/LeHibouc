@@ -6,6 +6,18 @@
 
 	<h2>Delete a book</h2>
 
-	TODO
+	<p>
+		Are you sure to want to delete the book : "{{ book.title }}" ?
+	</p>
+
+	<form action="{{ path('library_delete_book', {'slug': book.slug}) }}" method="post">
+	<a href="{{ path('library_book', {'slug': book.slug}) }}" class="btn btn-default">
+	  <i class="glyphicon glyphicon-chevron-left"></i>
+	  Cancel
+	</a>
+
+	<input type="submit" value="Delete" class="btn btn-danger" />
+	{{ form_rest(form) }}
+	</form>
 
 {% endblock %}

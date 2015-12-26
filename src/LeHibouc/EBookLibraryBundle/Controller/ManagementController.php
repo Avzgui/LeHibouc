@@ -79,8 +79,21 @@ class ManagementController extends Controller
           throw $this->createNotFoundException("There is no book with slug : " . $slug . " in base");
         }
 
+        //Create empty form with just CSRF
+        $form = $this->createFormBuilder()->getForm();
+
+        if ($form->handleRequest($request)->isValid()) {
+          $em->remove($book);
+          $em->flush();
+
+          $request->getSession()->getFlashBag()->add('info', "".$book->getTitle()." deleted");
+
+          return $this->redirect($this->generateUrl('library_homepage'));
+        }
+
         return $this->render('EBookLibraryBundle:Management:delete.html.twig', array(
-            'book' => $book
+            'book' => $book,
+            'form'   => $form->createView()
         ));
     }
 
