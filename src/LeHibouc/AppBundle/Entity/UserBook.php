@@ -4,6 +4,8 @@ namespace LeHibouc\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use LeHibouc\EBookLibraryBundle\Entity\Book;
+
 /**
  * UserBook
  *
@@ -59,6 +61,7 @@ class UserBook
     {
         $this->borrow = new \DateTime('now');
         $this->returned = null;
+        $this->nbPagesRead = 0;
     }
 
     /**
@@ -82,7 +85,7 @@ class UserBook
     {
         $this->user = $user;
 
-        return this;
+        return $this;
     }
 
     /**
@@ -106,7 +109,7 @@ class UserBook
     {
         $this->book = $book;
 
-        return this;
+        return $this;
     }
 
     /**

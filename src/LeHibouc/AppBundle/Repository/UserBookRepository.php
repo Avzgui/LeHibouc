@@ -3,6 +3,7 @@
 namespace LeHibouc\AppBundle\Repository;
 
 use LeHibouc\AppBundle\Entity\User;
+use LeHibouc\EBookLibraryBundle\Entity\Book;
 
 /**
  * UserBookRepository
@@ -23,15 +24,40 @@ class UserBookRepository extends \Doctrine\ORM\EntityRepository
 	{
 		//Create query request
 		$query = $this->createQueryBuilder('ub')
-		  ->where('ub.user = :user_id')
-		  	->setParameter('user_id', $user->getId())
-		  ->andWhere('ub.returned = :returned')
-		  	->setParameter('returned', null)
+		  ->where('ub.user = :user')
+		  	->setParameter('user', $user)
+		  ->andWhere('ub.returned IS NULL')
 		  ->leftJoin('ub.book', 'book')
 		  	->addSelect('book')
+		  ->getQuery()
 		;
 
 		//Return the result
-		return $query->getQuery()->getResult();
+		return $query->getResult();
+	}
+
+	/**
+	 * Get if a book is already borrowed or not by user
+	 *
+	 * @param User user
+	 * @param Book book
+	 *
+	 * @return Boolean
+	 */
+	public function isAlreadyBorrowed(User $user, Book $book)
+	{
+		$query = $this->createQueryBuilder('ub')
+		  ->where('ub.user = :user')
+		  	->setParameter('user', $user)
+		  ->andWhere('ub.book = :book')
+		  	->setParameter('book', $book)
+		  ->andWhere('ub.returned IS NULL')
+		  ->getQuery()
+		;
+
+		if($query->getOneOrNullResult())
+			return true;
+
+		return false;
 	}
 }

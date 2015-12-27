@@ -4,6 +4,12 @@
 
 {% block body %}
 
+	{% for key, message in app.session.flashbag.all() %}
+		<div class="alert alert-{{ key }}">
+		  {# { message } #}
+		</div>
+	{% endfor %}
+
 	{% block library_content %}
 	{% endblock %}
 

@@ -4,15 +4,34 @@
 
 {% block fos_user_content %}
 
-	<h2> Borrow the book : "{{ book.title }}" ? </h2>
+	{% if borrowed %}
 
-	 TODO (borrow)
+		<h3> You've already borrowed the book : "{{ book.title }}" </h3>
 
-	<p>
-	<a href="{{ path('library_book', {'slug': book.slug}) }}" class="btn btn-default">
-	  <i class="glyphicon glyphicon-chevron-left"></i>
-	  Cancel
-	</a> 
-	</p>
+		<a href="{{ path('library_book', {'slug': book.slug}) }}" class="btn btn-default">
+		  <i class="glyphicon glyphicon-chevron-left"></i>
+		  Cancel
+		</a>
+
+	{% else %}
+
+		<h3> Borrow the book : "{{ book.title }}" ? </h3>
+
+		<p>
+		After borrowing this book you will have direct access 
+		without having to search for it in the library.
+		</p>
+
+		<form action="{{ path('user_borrow', {'slug': book.slug}) }}" method="post">
+		<a href="{{ path('library_book', {'slug': book.slug}) }}" class="btn btn-default">
+		  <i class="glyphicon glyphicon-chevron-left"></i>
+		  Cancel
+		</a>
+
+		<input type="submit" value="Borrow" class="btn btn-primary"/>
+		{{ form_rest(form) }}
+		</form>
+
+	{% endif %}
 
 {% endblock fos_user_content %}
