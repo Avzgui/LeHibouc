@@ -4,6 +4,18 @@
 
 {% block fos_user_content %}
 
-	 TODO (user's books)
+	 <h2> {{ app.user.username }}'s Books </h2>
 
+	 <p>
+	 	{% if list is empty %}
+	 		You have no book borrowed
+	 	{% else %}
+	 		<ul>
+	 		{% for book in list %}
+	 			<li>Prout</li>
+	 		{% endfor %}
+	 		</ul>
+	 	{% endif %}
+	 </p>
+ 
 {% endblock fos_user_content %}

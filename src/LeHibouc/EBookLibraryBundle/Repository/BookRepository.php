@@ -12,7 +12,7 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class BookRepository extends \Doctrine\ORM\EntityRepository
 {
-	public function getAdverts($page, $nbPerPage)
+	public function getBooks($page, $nbPerPage)
 	{
 		$query = $this->createQueryBuilder('b')
 		  ->orderBy('b.title', 'DESC')

@@ -20,7 +20,7 @@ class DefaultController extends Controller
         $list = $this->getDoctrine()
           ->getManager()
           ->getRepository('EBookLibraryBundle:Book')
-          ->getAdverts($page, $nbPerPage)
+          ->getBooks($page, $nbPerPage)
         ;
 
         $nbPages = ceil(count($list)/$nbPerPage);

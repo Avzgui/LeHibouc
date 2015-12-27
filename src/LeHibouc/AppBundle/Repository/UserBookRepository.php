@@ -2,6 +2,8 @@
 
 namespace LeHibouc\AppBundle\Repository;
 
+use LeHibouc\AppBundle\Entity\User;
+
 /**
  * UserBookRepository
  *
@@ -10,4 +12,26 @@ namespace LeHibouc\AppBundle\Repository;
  */
 class UserBookRepository extends \Doctrine\ORM\EntityRepository
 {
+	/**
+	 * Get array of the books currently borrowed by an user
+	 *
+	 * @param User user
+	 *
+	 * @return Array of Book
+	 */
+	public function getBooksBorrowedByUser(User $user)
+	{
+		//Create query request
+		$query = $this->createQueryBuilder('ub')
+		  ->where('ub.user = :user_id')
+		  	->setParameter('user_id', $user->getId())
+		  ->andWhere('ub.returned = :returned')
+		  	->setParameter('returned', null)
+		  ->leftJoin('ub.book', 'book')
+		  	->addSelect('book')
+		;
+
+		//Return the result
+		return $query->getQuery()->getResult();
+	}
 }

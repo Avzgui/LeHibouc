@@ -16,9 +16,21 @@ class UserController extends Controller
 {
     public function indexAction(Request $request)
     {
-        return $this->render('AppBundle:User:index.html.twig');
+    	//Get the user
+    	$user = $this->getUser();
+    	
+    	//Get list of books borrowed by the user
+    	$list = $this->getDoctrine()
+          ->getManager()
+          ->getRepository('AppBundle:UserBook')
+          ->getBooksBorrowedByUser($user)
+        ;
+
+        return $this->render('AppBundle:User:index.html.twig', array(
+        	'list' => $list
+        ));
     }
-    
+
     public function borrowAction($slug, Request $request)
     {
     	//Find the book
