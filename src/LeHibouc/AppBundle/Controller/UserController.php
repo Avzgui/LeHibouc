@@ -84,6 +84,9 @@ class UserController extends Controller
 
     public function returnBookAction($slug, Request $request)
     {
+    	//Get the user
+    	$user = $this->getUser();
+
     	//Find the book
         $em = $this->getDoctrine()->getManager();
         $book = $em->getRepository('EBookLibraryBundle:Book')->findOneBySlug($slug);
@@ -93,8 +96,36 @@ class UserController extends Controller
           throw $this->createNotFoundException("There is no book with slug : " . $slug . " in base");
         }
 
+        //Check if the book aren't already borrowed
+        $borrowed = $this->getDoctrine()
+          ->getManager()
+          ->getRepository('AppBundle:UserBook')
+          ->isAlreadyBorrowed($user, $book)
+        ;
+
+        //Create empty form with just CSRF
+        $form = $this->createFormBuilder()->getForm();
+
+        if ($borrowed) {
+
+	        if ($form->handleRequest($request)->isValid()) {
+
+		      $borrowed->setReturned(new \DateTime('now'));
+
+	          //TODO : set the number of pages already read
+
+	          $em->flush();
+
+	          $request->getSession()->getFlashBag()->add('info', "".$book->getTitle()." returned");
+
+	          return $this->redirect($this->generateUrl('user_index'));
+	        }
+    	}
+
         return $this->render('AppBundle:User:return.html.twig', array(
-        	'book' => $book
+        	'book' => $book,
+        	'borrowed' => $borrowed,
+        	'form' => $form->createView()
         ));
     }
 

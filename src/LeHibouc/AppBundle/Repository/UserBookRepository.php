@@ -43,7 +43,7 @@ class UserBookRepository extends \Doctrine\ORM\EntityRepository
 	 * @param User user
 	 * @param Book book
 	 *
-	 * @return Boolean
+	 * @return UserBook or null
 	 */
 	public function isAlreadyBorrowed(User $user, Book $book)
 	{
@@ -56,9 +56,6 @@ class UserBookRepository extends \Doctrine\ORM\EntityRepository
 		  ->getQuery()
 		;
 
-		if($query->getOneOrNullResult())
-			return true;
-
-		return false;
+		return $query->getOneOrNullResult();
 	}
 }
