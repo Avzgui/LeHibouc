@@ -24,11 +24,12 @@ class UserBookRepository extends \Doctrine\ORM\EntityRepository
 	{
 		//Create query request
 		$query = $this->createQueryBuilder('ub')
+		  ->leftJoin('ub.book', 'b')
+		  	->addSelect('b')
 		  ->where('ub.user = :user')
 		  	->setParameter('user', $user)
 		  ->andWhere('ub.returned IS NULL')
-		  ->leftJoin('ub.book', 'book')
-		  	->addSelect('book')
+		  ->orderBy('ub.borrow', 'DESC')
 		  ->getQuery()
 		;
 

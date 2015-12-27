@@ -24,12 +24,16 @@ class UserBook
     private $id;
 
     /**
+     * @var User
+     * 
      * @ORM\ManyToOne(targetEntity="LeHibouc\AppBundle\Entity\User", inversedBy="booksBorrowed", cascade={"persist"}, fetch="LAZY")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
     private $user;
 
     /**
+     * @var Book
+     *
      * @ORM\ManyToOne(targetEntity="LeHibouc\EBookLibraryBundle\Entity\Book", cascade={"persist"}, fetch="LAZY")
      * @ORM\JoinColumn(name="book_id", referencedColumnName="id",nullable=false)
      */
@@ -93,7 +97,7 @@ class UserBook
      *
      * @return User
      */
-    public function getUser(User $user)
+    public function getUser()
     {
         return $this->user;
     }
@@ -117,7 +121,7 @@ class UserBook
      *
      * @return Book
      */
-    public function getBook(Book $book)
+    public function getBook()
     {
         return $this->book;
     }

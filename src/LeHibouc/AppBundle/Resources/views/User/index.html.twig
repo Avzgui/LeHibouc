@@ -11,8 +11,11 @@
 	 		You have no book borrowed
 	 	{% else %}
 	 		<ul>
-	 		{% for book in list %}
-	 			<li>Prout</li>
+	 		{% for borrow in list %}
+	 			<li>
+	 				<a href="{{ path('library_book', {'slug': borrow.book.slug}) }}">
+	 				{{ borrow.book.title }}</a>, borrowed since {{ borrow.borrow.format('d/m/Y') }}
+	 			</li>
 	 		{% endfor %}
 	 		</ul>
 	 	{% endif %}
