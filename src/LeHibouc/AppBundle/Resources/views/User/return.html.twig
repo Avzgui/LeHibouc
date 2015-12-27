@@ -1,0 +1,18 @@
+{# src/LeHibouc/AppBundle/Resources/views/User/return.html.twig #}
+
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+	<h2> Return the book : "{{ book.title }}" ? </h2>
+
+	 TODO (return)
+
+	<p>
+	<a href="{{ path('library_book', {'slug': book.slug}) }}" class="btn btn-default">
+	  <i class="glyphicon glyphicon-chevron-left"></i>
+	  Cancel
+	</a>
+	</p> 
+
+{% endblock fos_user_content %}

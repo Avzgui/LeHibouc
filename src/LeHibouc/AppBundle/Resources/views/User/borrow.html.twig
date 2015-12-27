@@ -1,0 +1,18 @@
+{# src/LeHibouc/AppBundle/Resources/views/User/borrow.html.twig #}
+
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+	<h2> Borrow the book : "{{ book.title }}" ? </h2>
+
+	 TODO (borrow)
+
+	<p>
+	<a href="{{ path('library_book', {'slug': book.slug}) }}" class="btn btn-default">
+	  <i class="glyphicon glyphicon-chevron-left"></i>
+	  Cancel
+	</a> 
+	</p>
+
+{% endblock fos_user_content %}

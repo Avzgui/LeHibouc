@@ -9,8 +9,6 @@ library_homepage:
 library_book:
     path:     /book/{slug}
     defaults: {_controller: EBookLibraryBundle:Default:viewBook}
-    requirements:
-        page: \d+
 
 library_add_book:
     path:     /add/book
@@ -19,11 +17,7 @@ library_add_book:
 library_edit_book:
     path:     /book/{slug}/edit
     defaults: { _controller: EBookLibraryBundle:Management:editBook }
-    requirements:
-        page: \d+
 
 library_delete_book:
     path:     /book/{slug}/delete
     defaults: { _controller: EBookLibraryBundle:Management:deleteBook }
-    requirements:
-        page: \d+
