@@ -4,9 +4,11 @@
 
 {% block body %}
 
-  {% for key, message in app.session.flashbag.all() %}
+  {% for key, messages in app.session.flashbag.all() %}
     <div class="alert alert-{{ key }}">
-      {# { message } #}
+      {% for message in messages %}
+	  	{{ message }}
+	  {% endfor %}
     </div>
   {% endfor %}
 

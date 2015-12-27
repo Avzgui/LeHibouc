@@ -71,7 +71,7 @@ class UserController extends Controller
 
 	          $request->getSession()->getFlashBag()->add('info', "".$book->getTitle()." borrowed");
 
-	          return $this->redirect($this->generateUrl('app_homepage'));
+	          return $this->redirect($this->generateUrl('user_index'));
 	        }
     	}
 
