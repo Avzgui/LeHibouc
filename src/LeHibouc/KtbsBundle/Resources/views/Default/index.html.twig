@@ -1,7 +1,55 @@
 <!DOCTYPE html>
 <html>
+	
 	<body>
 		<h1>kTBS Home</h1>
-		Hello World!
+		<p>Test pour envoyer une trace et des obsels : </p>
+		
+		<!-- Menu pour choisir l'action (ajouter trace ou obsels ou recuperer trace ou des obsels) -->
+		
+		<select id="action">
+		  <option selected="selected">Choisir actions</option>
+          <option value="creerTr">Creer trace</option>
+          <option value="creerObs">Creer obsels</option>
+          <option value="getTr">Recuperer trace</option>
+          <option value="getObs">Recuperer obsels</option>
+        </select>
+        
+        <!-- Creer ou recuperer une trace ou les obsels d'une trace ------------------------------------------------>
+		
+		<div id="creation_trace" hidden="true">
+			<label for="nomTrace">Id de la trace</label>
+			<input type="text" name="nomTrace" id="nomTrace"/>
+			
+			<button id="bGET">Récuperer</button>
+			<button id="bPOST">Envoyer</button>
+			<button id="reset">Renitialiser</button>
+		</div>
+		
+		<!-- Creer un Obsels --------------------------------------------------------------------------------------->
+		
+		<div id="creation_obsels" hidden="true">
+			<label for="nomTrace">Id de la trace</label>
+			<input type="text" name="nomTrace" id="nomTrace_o"/>
+			
+			<label for="nomObsels">Id de l'Obsel</label>
+			<input type="text" name="nomObsels" id="nomObsels"/>
+			
+			<label for="typeObsels">Type de l'Obsel</label>
+			<input type="text" name="typeObsels" id="typeObsels"/>
+			
+			<button id="bPOST_o">Envoyer</button>
+			<button id="reset_o">Renitialiser</button>
+		</div>
+		
+		<!-- DIV resultat ------------------------------------------------------------------------------------------->
+		<div>
+			<p id="resultat"></p>
+		</div>
+
+		
+		{% javascripts '@KtbsBundle/Resources/js/requetes.js' %}
+    		<script src="{{ asset_url }}"></script>
+		{% endjavascripts %}
 	</body>
 </html>

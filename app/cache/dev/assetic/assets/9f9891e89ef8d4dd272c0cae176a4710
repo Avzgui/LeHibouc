@@ -1,0 +1,14 @@
+(function() {
+	
+	var bget = document.getElementById("bGET");
+	var bpost = document.getElementById("bPOST");
+	var bput = document.getElementById("bPUT");
+	
+	function envoyerRequete (evt) {
+		alert("coucou");
+	}
+	
+	bget.addEventListener("click", envoyerRequete);
+	bpost.addEventListener("click", envoyerRequete);
+	bput.addEventListener("click", envoyerRequete);
+})();

@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new LeHibouc\AppBundle\AppBundle(),
             new LeHibouc\EBookLibraryBundle\EBookLibraryBundle(),
             new LeHibouc\KtbsBundle\KtbsBundle(),
+            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
