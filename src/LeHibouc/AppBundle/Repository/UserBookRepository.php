@@ -2,6 +2,8 @@
 
 namespace LeHibouc\AppBundle\Repository;
 
+use Doctrine\ORM\Tools\Pagination\Paginator;
+
 use LeHibouc\AppBundle\Entity\User;
 use LeHibouc\EBookLibraryBundle\Entity\Book;
 
@@ -35,6 +37,51 @@ class UserBookRepository extends \Doctrine\ORM\EntityRepository
 
 		//Return the result
 		return $query->getResult();
+	}
+
+	/**
+	 * Get array of the books not currently borrowed by an user
+	 *
+	 * @param User user
+	 *
+	 * @return Paginator of Book
+	 */
+	public function getBooksNotBorrowedByUser($user, $page, $nbPerPage)
+	{
+		//Get books borrowed by user
+		$borrow = $this->getBooksBorrowedByUser($user);
+
+		//Get id of this books
+		$books = array();
+		foreach ($borrow as $b) {
+			$books[] = $b->getBook();
+		}
+
+		//Get all books EXCEPT those borrowed
+		$query = $this->_em->createQueryBuilder();
+
+		if( empty($books) ){
+			$query = $query->select('book')
+					->from('EBookLibraryBundle:Book', 'book')
+	        		->getQuery()
+	        ;
+		}
+		else{
+			$query = $query->select('book')
+					->from('EBookLibraryBundle:Book', 'book')
+	          	  		->where('book NOT IN (:books)')
+	          				->setParameter('books', $books)
+	        		->getQuery()
+	        ;
+    	}
+
+		$query
+		  ->setFirstResult(($page-1) * $nbPerPage)
+		  ->setMaxResults($nbPerPage)
+		;
+
+        //Return the result
+		return new Paginator($query, true);
 	}
 
 	/**

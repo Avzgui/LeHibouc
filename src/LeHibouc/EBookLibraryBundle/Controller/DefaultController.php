@@ -10,11 +10,14 @@ class DefaultController extends Controller
 {
     public function indexAction($page)
     {
-        if ($page < 1) {
-          throw $this->createNotFoundException("Page ".$page." doesn't exist.");
-        }
+      if ($page < 1) {
+        throw $this->createNotFoundException("Page ".$page." doesn't exist.");
+      }
 
-        $nbPerPage = 3;
+      $nbPerPage = 3;
+      
+      //If user is not authenticated
+      if (!$this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
 
         //Paginator
         $list = $this->getDoctrine()
@@ -35,6 +38,31 @@ class DefaultController extends Controller
           'nbPages'     => $nbPages,
           'page'        => $page
         ));
+      }
+
+      //If user is authenticated
+
+      //Get the user
+      $user = $this->getUser();
+
+      $list = $this->getDoctrine()
+        ->getManager()
+        ->getRepository('AppBundle:UserBook')
+        ->getBooksNotBorrowedByUser($user, $page, $nbPerPage)
+      ;
+
+      $nbPages = ceil(count($list)/$nbPerPage);
+
+      // If page doesn't exist -> 404
+      if ($nbPages != 0 && $page > $nbPages) {
+        throw $this->createNotFoundException("Page ".$page." doesn't exist.");
+      }
+
+      return $this->render('EBookLibraryBundle:Default:index.html.twig', array(
+        'list' => $list,
+        'nbPages'     => $nbPages,
+        'page'        => $page
+      ));
     }
     
     public function viewBookAction($slug, Request $request)
