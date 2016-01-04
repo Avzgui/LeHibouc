@@ -5,6 +5,7 @@ namespace LeHibouc\EBookLibraryBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class DefaultController extends Controller
 {
@@ -71,13 +72,26 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $book = $em->getRepository('EBookLibraryBundle:Book')->findOneBySlug($slug);
 
+        
         //If book doesn't exist
         if ($book === null) {
           throw $this->createNotFoundException("The book you are looking for doesn't exist.");
         }
-      	
+        
+        //Check if already borrowed
+        $user = $this->getUser();
+        $borrowed = null;
+        if( $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED') ){
+          
+          $borrowed = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:UserBook')
+            ->isAlreadyBorrowed($user, $book);
+        }
+
         return $this->render('EBookLibraryBundle:Default:book.html.twig', array(
             'book'  => $book,
+            'borrowed' => $borrowed,
         ));
     }
 

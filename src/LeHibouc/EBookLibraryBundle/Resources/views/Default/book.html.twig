@@ -12,18 +12,50 @@
 	<h5> Abstract : </h5>
 	<p> {{ book.abstract }} </p>
 
-	{% if is_granted('ROLE_ADMIN') %}
-	
-		<a href="{{ path('library_edit_book', {'slug': book.slug}) }}" class="btn btn-default">
-		  <i class="glyphicon glyphicon-pencil"></i>
-		  Edit
-		</a>
+	{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+		{% if is_granted('ROLE_ADMIN') %}
 
-		<a href="{{ path('library_delete_book', {'slug': book.slug}) }}" class="btn btn-danger">
-		  <i class="glyphicon glyphicon-trash"></i>
-		  Delete
-		</a>
+			<a href="{{ path('library_homepage') }}" class="btn btn-default">
+			  <i class="glyphicon glyphicon-chevron-left"></i>
+			  Cancel
+			</a> 
+	
+			<a href="{{ path('library_edit_book', {'slug': book.slug}) }}" class="btn btn-default">
+			  <i class="glyphicon glyphicon-pencil"></i>
+			  Edit
+			</a>
+
+			<a href="{{ path('library_delete_book', {'slug': book.slug}) }}" class="btn btn-danger">
+			  <i class="glyphicon glyphicon-trash"></i>
+			  Delete
+			</a>
+
+		{% else %}
+			{% if borrowed %}
+
+				<a href="{{ path('user_index') }}" class="btn btn-default">
+				  <i class="glyphicon glyphicon-chevron-left"></i>
+				  Cancel
+				</a> 
+
+			{% else %}
+
+				<a href="{{ path('library_homepage') }}" class="btn btn-default">
+				  <i class="glyphicon glyphicon-chevron-left"></i>
+				  Cancel
+				</a> 
+
+			{% endif %}
+		{% endif %}
+	{% else %}
+
+		<a href="{{ path('library_homepage') }}" class="btn btn-default">
+		  <i class="glyphicon glyphicon-chevron-left"></i>
+		  Cancel
+		</a> 
 
 	{% endif %}
+
+
 
 {% endblock %}
