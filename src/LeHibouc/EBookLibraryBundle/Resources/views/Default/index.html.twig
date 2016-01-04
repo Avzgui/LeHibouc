@@ -5,6 +5,8 @@
 {% block library_content %}
 
 	<h2>Books</h2>
+
+	<h4> Research feature TODO </h4>
 	
 	{% if is_granted('ROLE_ADMIN') %}
 		<a href="{{ path('library_add_book') }}" class="btn btn-default">
@@ -18,14 +20,23 @@
 		<li>
 			<a href="{{ path('library_book', {'slug': book.slug}) }}">{{ book.title }}</a>
 			, by {{ book.author }}.
-			{% if is_granted('ROLE_ADMIN') %}
-			<a href="{{ path('library_edit_book', {'slug': book.slug}) }}" class="btn btn-default">
-				<i class="glyphicon glyphicon-pencil"></i>
-			</a>
+			<span class="btn btn-default">
+				<i class="glyphicon glyphicon-eye-open"></i>
+			</span>
+			{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+				{% if is_granted('ROLE_ADMIN') %}
+					<a href="{{ path('library_edit_book', {'slug': book.slug}) }}" class="btn btn-default">
+						<i class="glyphicon glyphicon-pencil"></i>
+					</a>
 
-			<a href="{{ path('library_delete_book', {'slug': book.slug}) }}" class="btn btn-danger">
-			  <i class="glyphicon glyphicon-trash"></i>
-			</a>
+					<a href="{{ path('library_delete_book', {'slug': book.slug}) }}" class="btn btn-danger">
+					  <i class="glyphicon glyphicon-trash"></i>
+					</a>
+				{% else %}
+					<a href="{{ path('user_borrow', {'slug': book.slug}) }}" class="btn btn-primary">
+						<i class="glyphicon glyphicon-log-in"></i>
+					</a>
+				{% endif %}
 			{% endif %}
 		</li>
 		{% endfor %}

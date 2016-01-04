@@ -1,8 +1,16 @@
-{# src/LeHibouc/UserBundle/Resources/views/layout.html.twig #}
+{# src/LeHibouc/EBookLibraryBundle/Resources/views/layout.html.twig #}
 
 {% extends "::layout.html.twig" %}
 
 {% block body %}
+
+	{% for key, messages in app.session.flashbag.all() %}
+		<div class="alert alert-{{ key }}">
+		  {% for message in messages %}
+		  	{{ message }}
+		  {% endfor %}
+		</div>
+	{% endfor %}
 
 	{% block library_content %}
 	{% endblock %}

@@ -1,0 +1,37 @@
+{# src/LeHibouc/AppBundle/Resources/views/User/return.html.twig #}
+
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+	 {% if not borrowed %}
+
+		<h3> You cannot return a book you haven't borrowed </h3>
+
+		<a href="{{ path('library_book', {'slug': book.slug}) }}" class="btn btn-default">
+		  <i class="glyphicon glyphicon-chevron-left"></i>
+		  Cancel
+		</a> 
+
+	{% else %}
+
+		<h3> Return the book : "{{ book.title }}" ? </h3>
+
+		<p>
+		After returning this book you will have no more direct access 
+		without having to search for it in the library.
+		</p>
+
+		<form action="{{ path('user_return_book', {'slug': book.slug}) }}" method="post">
+		<a href="{{ path('library_book', {'slug': book.slug}) }}" class="btn btn-default">
+		  <i class="glyphicon glyphicon-chevron-left"></i>
+		  Cancel
+		</a>
+
+		<input type="submit" value="Return" class="btn btn-primary"/>
+		{{ form_rest(form) }}
+		</form>
+
+	{% endif %}
+
+{% endblock fos_user_content %}

@@ -1,0 +1,30 @@
+{# src/LeHibouc/AppBundle/Resources/views/User/index.html.twig #}
+
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+	 <h2> {{ app.user.username }}'s Books </h2>
+
+	 <p>
+	 	{% if list is empty %}
+	 		You have no book borrowed
+	 	{% else %}
+	 		<ul>
+	 		{% for borrow in list %}
+	 			<li>
+	 				<a href="{{ path('library_book', {'slug': borrow.book.slug}) }}">
+	 				{{ borrow.book.title }}</a>, borrowed since {{ borrow.borrow.format('d/m/Y') }}
+	 				<span class="btn btn-default">
+						<i class="glyphicon glyphicon-eye-open"></i>
+					</span>
+	 				<a href="{{ path('user_return_book', {'slug': borrow.book.slug}) }}" class="btn btn-primary">
+						<i class="glyphicon glyphicon-log-out"></i>
+					</a>
+	 			</li>
+	 		{% endfor %}
+	 		</ul>
+	 	{% endif %}
+	 </p>
+ 
+{% endblock fos_user_content %}
