@@ -1,0 +1,14 @@
+{# src/LeHibouc/AppBundle/Resources/views/Default/users_list.html.twig #}
+
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+	 <h1>Users</h1>
+	{% for user in users %}
+		{% if 'ROLE_ADMIN' not in user.roles %}
+			<li> {{ user.username|e }} </li>
+		{% endif %}
+	{% endfor %}
+
+{% endblock fos_user_content %}

@@ -20,6 +20,8 @@
 		<li>
 			<a href="{{ path('library_book', {'slug': book.slug}) }}">{{ book.title }}</a>
 			, by {{ book.author }}.
+			{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+			{% endif %}
 			{% if is_granted('ROLE_ADMIN') %}
 			<a href="{{ path('library_edit_book', {'slug': book.slug}) }}" class="btn btn-default">
 				<i class="glyphicon glyphicon-pencil"></i>

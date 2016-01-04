@@ -13,3 +13,11 @@ user_return_book:
 user_index:
     path:     /user/books
     defaults: { _controller: AppBundle:User:index }
+
+admin_index:
+    path:     /admin
+    defaults: { _controller: AppBundle:Admin:index }
+
+admin_users_list:
+    path:     /users
+    defaults: { _controller: AppBundle:Admin:users }
