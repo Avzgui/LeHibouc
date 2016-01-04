@@ -1,0 +1,17 @@
+ktbs_homepage:
+    path:     /ktbs/
+    defaults: { _controller: KtbsBundle:Default:index }
+    methods:  [GET]
+ktbs_post:
+    path:     /ktbs/post
+    defaults: { _controller: KtbsBundle:Default:postTrace }
+    methods:  [POST,GET]
+ktbs_put:
+    path:     /ktbs/put
+    defaults: { _controller: KtbsBundle:Default:putTrace }
+    methods:  [PUT]
+
+ktbs_get:
+    path:     /ktbs/get
+    defaults: { _controller: KtbsBundle:Default:getTrace }
+    methods:  [GET]

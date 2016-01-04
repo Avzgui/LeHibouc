@@ -1,0 +1,37 @@
+(function() {
+
+	var bget = document.getElementById("bGET");
+	var bpost = document.getElementById("bPOST");
+	var bput = document.getElementById("bPUT");
+	
+	function envoyerRequete(evt) {
+		var req = new XMLHttpRequest(),
+			trace = document.getElementById("trace");
+			url = "http://dsi-liris-silex.univ-lyon1.fr/m2ia/ktbs/Hibouc/"; //a verifier
+		
+		//Preparation de la requete
+    	req.setRequestHeader("cache-control", "private;no-cache");
+        req.setRequestHeader("accept", "text/turtle");//Turtle or JSON application/json
+        req.setRequestHeader("content-type", "text/turtle");
+		
+		//on determine la methode
+		if(this.id === "bGET"){
+			alert("coucou GET");
+			req.open("GET", url);
+		}else if(this.id === "bPUT"){
+			alert("coucou PUT");
+			req.open("PUT", url)
+		}else{	
+			alert("coucou POST");
+			req.open("POST", url)
+		}
+		//On envoie la trace a la base
+		req.send(trace.value);
+		
+	}
+	
+	bget.addEventListener("click", envoyerRequete);
+	bpost.addEventListener("click", envoyerRequete);
+	bput.addEventListener("click", envoyerRequete);
+	
+})();

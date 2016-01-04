@@ -10,6 +10,12 @@ imports:
 parameters:
     locale: en
 
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~
+        
 framework:
     #esi:             ~
     translator:      { fallbacks: ["%locale%"] }

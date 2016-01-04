@@ -1,0 +1,95 @@
+(function() {
+	
+	var actionSelect = document.getElementById("action"),
+		url = "http://dsi-liris-silex.univ-lyon1.fr/m2ia/ktbs/Hibouc/",
+		divCreationTrc = document.getElementById("creation_trace"),
+		divCreationObs = document.getElementById("creation_obsels"),
+		reset = document.getElementById("reset");
+		action ="";
+				
+	function afficherAction(evt){
+		action = actionSelect.value;
+		switch(actionSelect.value){
+			case "creerTr":
+				if(divCreationObs.hidden === true && divCreationTrc.hidden !== false){
+					divCreationTrc.hidden = false;
+				}
+				break;
+			case "creerObs":
+				if(divCreationTrc.hidden === true && divCreationObs.hidden !== false){
+					divCreationObs.hidden = false;
+				}
+				break;
+			case "getTr":
+				if(divCreationObs.hidden === true && divCreationTrc.hidden !== false){
+					divCreationTrc.hidden = false;
+				}
+				break;
+			case "getObs":
+				if(divCreationObs.hidden === true && divCreationTrc.hidden !== false){
+					divCreationTrc.hidden = false;
+				}
+				break;
+			default :
+		}
+		//TODO
+	}
+	
+	function getTrace(nomTrace){
+		//TODO
+	}
+	
+	function getObsels(nomTrace){
+		//TODO
+	}
+	
+	function postObsel(nomTrace, Obsel){
+		//TODO
+	}
+	
+	function postTrace(nomTrace){
+		//TODO
+	} 
+	
+	function reset(){
+		location.reload();
+	}
+	reset.addEventListener("click",reset);
+	actionSelect.addEventListener("change", afficherAction);
+	/*var bget = document.getElementById("bGET");
+	var bpost = document.getElementById("bPOST");
+	var bput = document.getElementById("bPUT");
+	
+	function envoyerRequete(evt) {
+		var req = new XMLHttpRequest(),
+			//Trace au format JSON ou turle
+			trace = document.getElementById("trace");
+			url = "http://dsi-liris-silex.univ-lyon1.fr/m2ia/ktbs/Hibouc/"; //a verifier
+		
+		//on determine la methode
+		if(this.id === "bGET"){
+			alert("coucou GET");
+			req.open("GET", url);
+		}else if(this.id === "bPUT"){
+			alert("coucou PUT");
+			req.open("PUT", url);
+		}else{	
+			alert("coucou POST");
+			req.open("POST", url);
+		}
+		//Preparation de la requete
+    	req.setRequestHeader("cache-control", "private;no-cache");
+        req.setRequestHeader("accept", "application/json");//Turtle or JSON application/json
+        req.setRequestHeader("content-type", "application/json");
+		
+		//On envoie la trace a la base
+		alert("MM : " + trace.value);
+		req.send(trace.value);
+		
+	}
+	
+	bget.addEventListener("click", envoyerRequete);
+	bpost.addEventListener("click", envoyerRequete);
+	bput.addEventListener("click", envoyerRequete);
+	*/
+})();

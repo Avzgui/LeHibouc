@@ -1,0 +1,5 @@
+_assetic:
+    resource: .
+    type: assetic
+_app:
+    resource: /home/suicide/Documents/PROJET_TRACE/LeHibouc/app/config/routing_dev.yml
