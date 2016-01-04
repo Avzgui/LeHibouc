@@ -4,7 +4,13 @@
 
 {% block library_content %}
 
-	<h2> {{ book.title }} </h2>
+	<h2> {{ book.title }} 
+		<span class="btn btn-default">
+			Read
+			<i class="glyphicon glyphicon-eye-open"></i>
+		</span>
+	</h2>
+
 	<h3> by {{ book.author }} </h3>
 
 	<h3> Language : {{ book.language }} </h3>
@@ -38,12 +44,22 @@
 				  Cancel
 				</a> 
 
+				<a href="{{ path('user_return_book', {'slug': book.slug}) }}" class="btn btn-primary">
+					Return the book
+					<i class="glyphicon glyphicon-log-out"></i>
+				</a>
+
 			{% else %}
 
 				<a href="{{ path('library_homepage') }}" class="btn btn-default">
 				  <i class="glyphicon glyphicon-chevron-left"></i>
 				  Cancel
-				</a> 
+				</a>
+
+				<a href="{{ path('user_borrow', {'slug': book.slug}) }}" class="btn btn-primary">
+					Borrow
+					<i class="glyphicon glyphicon-log-in"></i>
+				</a>
 
 			{% endif %}
 		{% endif %}

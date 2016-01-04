@@ -15,6 +15,12 @@
 	 			<li>
 	 				<a href="{{ path('library_book', {'slug': borrow.book.slug}) }}">
 	 				{{ borrow.book.title }}</a>, borrowed since {{ borrow.borrow.format('d/m/Y') }}
+	 				<span class="btn btn-default">
+						<i class="glyphicon glyphicon-eye-open"></i>
+					</span>
+	 				<a href="{{ path('user_return_book', {'slug': borrow.book.slug}) }}" class="btn btn-primary">
+						<i class="glyphicon glyphicon-log-out"></i>
+					</a>
 	 			</li>
 	 		{% endfor %}
 	 		</ul>
