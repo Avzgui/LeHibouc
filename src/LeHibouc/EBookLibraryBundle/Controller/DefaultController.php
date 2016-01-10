@@ -106,7 +106,9 @@ class DefaultController extends Controller
         throw $this->createNotFoundException("The book you are looking for doesn't exist.");
       }
 
-      return $this->render('EBookLibraryBundle:Default:reader.html.twig');
+      return $this->render('EBookLibraryBundle:Default:reader.html.twig', array(
+        'book' => $book,
+      ));
     }
 
     public function latestAction($limit = 3)
