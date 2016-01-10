@@ -5,10 +5,10 @@
 {% block library_content %}
 
 	<h2> {{ book.title }} 
-		<span class="btn btn-default">
+		<a href="{{ path('library_read_book', {'slug': book.slug}) }}" class="btn btn-default" target="_blank">
 			Read
 			<i class="glyphicon glyphicon-eye-open"></i>
-		</span>
+		</a>
 	</h2>
 
 	<h3> by {{ book.author }} </h3>
