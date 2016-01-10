@@ -95,6 +95,20 @@ class DefaultController extends Controller
         ));
     }
 
+    public function bookReaderAction($slug, Request $request)
+    {
+      //Find the book
+      $em = $this->getDoctrine()->getManager();
+      $book = $em->getRepository('EBookLibraryBundle:Book')->findOneBySlug($slug);
+
+      //If book doesn't exist
+      if ($book === null) {
+        throw $this->createNotFoundException("The book you are looking for doesn't exist.");
+      }
+
+      return $this->render('EBookLibraryBundle:Default:reader.html.twig');
+    }
+
     public function latestAction($limit = 3)
     {
         $list = $this->getDoctrine()

@@ -1,3 +1,4 @@
+# Default path
 library_homepage:
     path:     /{page}
     defaults: 
@@ -10,6 +11,11 @@ library_book:
     path:     /book/{slug}
     defaults: {_controller: EBookLibraryBundle:Default:viewBook}
 
+library_read_book:
+    path:     /book/{slug}/reader
+    defaults: {_controller: EBookLibraryBundle:Default:bookReader}
+
+# Management path
 library_add_book:
     path:     /add/book
     defaults: { _controller: EBookLibraryBundle:Management:addBook }

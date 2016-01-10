@@ -1,0 +1,21 @@
+{# src/LeHibouc/EBookLibraryBundle/Resources/views/Default/reader.html.twig #}
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+  		<title>Le Hibouc - Reader</title>
+
+  		<script src="https://cdn.jsdelivr.net/jszip/2.5.0/jszip.min.js"></script>
+  		<script src="https://cdn.jsdelivr.net/epub.js/0.2.11/epub.min.js"></script>
+	</head>
+
+	<body>
+		<script>
+		  var book = ePub("/home/avzgui/Calibre/Howard Phillips Lovecraft/Dans l'Abime du Temps (6)/Dans l'Abime du Temps - Howard Phillips Lovecraft.epub");
+		  book.renderTo("area");
+		</script>
+	</body>
+</html>
