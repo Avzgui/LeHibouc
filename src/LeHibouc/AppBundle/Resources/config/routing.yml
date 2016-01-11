@@ -1,6 +1,12 @@
+# Default path
 app_homepage:
     path:     /
     defaults: { _controller: AppBundle:Default:index }
+
+# User path
+user_index:
+    path:     /user/books
+    defaults: { _controller: AppBundle:User:index }
 
 user_borrow:
     path:     /library/book/{slug}/borrow
@@ -10,10 +16,7 @@ user_return_book:
     path:     /library/book/{slug}/return
     defaults: { _controller: AppBundle:User:returnBook }
 
-user_index:
-    path:     /user/books
-    defaults: { _controller: AppBundle:User:index }
-
+# Admin path
 admin_index:
     path:     /admin
     defaults: { _controller: AppBundle:Admin:index }

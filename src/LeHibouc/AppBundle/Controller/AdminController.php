@@ -13,7 +13,7 @@ class AdminController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('AppBundle:Default:index.html.twig');
+        return $this->render('AppBundle:Admin:index.html.twig');
     }
 
     public function usersAction(Request $request)
