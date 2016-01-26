@@ -1,0 +1,235 @@
+
+h1{
+  font-size: 2em;
+}
+
+h2{
+  color:rgb(120,169,60);
+}
+
+h3{
+  color: rgb(92,161,218);
+}
+
+.navbar-fixed-top
+{
+  height:60px;
+  background-color: white;
+}
+
+.page-content
+{
+   margin-top: 60px;
+}
+
+.thumbnail {
+  margin-top:20px;
+  min-height:350px;
+  width:100%;
+}
+
+
+@media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) {
+  .flex-video { padding-top: 0; }
+}
+
+
+
+.dropdown-menu{
+  background-color:white;
+  min-width: 140px;
+}
+
+.dropdown-menu > li > a{
+
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  background-color: rgb(153,205,255);
+  background-image:none;
+  color:#555;
+  font-weight:bold;
+}
+
+#titre {
+  text-align: center;
+  color: rgb(41,127,200);
+}
+
+#titre:hover {
+  color: rgb(149,113,178);
+}
+
+
+.nav-tabs > li {
+  float: right;
+  margin-right: none;
+  background: transparent;
+}
+
+.nav-tabs > li > a {
+  border-radius: 0;
+  color: #555;
+  font-weight: bold;
+  border-top: 3px solid transparent;
+}
+
+/*
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover 
+.nav-tabs > li.active > a:focus {
+  cursor: default;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-bottom-color: transparent;
+  border-top: 3px solid #428bca;
+}
+*/
+
+.nav-tabs > li > a:hover
+{
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+
+.nav-tabs > li.active > a.liris-green,
+.nav-tabs > li > a.liris-green:hover {
+  border-top: 3px solid rgb(120,169,60);
+  color: rgb(120,169,60);
+}
+
+.nav-tabs > li.active > a.liris-lightblue,
+.nav-tabs > li > a.liris-lightblue:hover {
+  border-top: 3px solid rgb(153,205,255);
+  color: rgb(153,205,255);
+}
+
+.nav-tabs > li.active > a.liris-purple,
+.nav-tabs > li > a.liris-purple:hover {
+  border-top: 3px solid rgb(149,113,178);
+  color: rgb(149,113,178);
+}
+
+.nav-tabs > li.active > a.liris-mediumblue,
+.nav-tabs > li > a.liris-mediumblue:hover {
+  border-top: 3px solid rgb(92,161,218);
+  color: rgb(92,161,218);
+}
+
+.nav-tabs > li.active > a.liris-mauve,
+.nav-tabs > li > a.liris-mauve:hover {
+  border-top: 3px solid rgb(182,57,125);
+  color: rgb(182,57,125);
+}
+
+
+.nav-pills > li > a {
+  border-radius: 0;
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
+}
+
+.nav-pills > li.active > a:after,
+.nav-pills > li.active > a:hover:after,
+.nav-pills > li.active > a:focus:after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  margin-top: -1.428em;
+  height: 0;
+  width: 0;
+  border-top: 1.428em solid transparent;
+  border-bottom: 1.428em solid transparent;
+  border-left: 1em solid #428bca;
+  z-index: 1;
+}
+
+
+.nav-pills > li > a:hover:after,
+.nav-pills > li > a:focus:after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  margin-top: -1.428em;
+  height: 0;
+  width: 0;
+  border-top: 1.428em solid transparent;
+  border-bottom: 1.428em solid transparent;
+  border-left: 1em solid #eee;
+  z-index: 1;
+}
+
+.progress {
+  border-radius: 0;
+}
+
+.bg-grey{
+  background: rgb(235,236,241);
+}
+
+
+.progress-bar-undone {
+  background: #f5f5f5;
+  color: #000;
+}
+
+.progress-bar-green {
+  background: rgb(120,169,60);
+}
+
+.progress-bar-lightblue {
+  background: rgb(153,205,255);
+}
+
+.progress-bar-mediumblue {
+  background: rgb(92,161,218);
+}
+
+.progress-bar-darkblue {
+  background: rgb(51,137,210);
+}
+
+.progress-bar-purple {
+  background: rgb(149, 113, 178);
+}
+
+.progress-bar-mauve {
+  background: rgb(182,57,125);
+}
+.border-right{
+  border-right: 2px dashed #5a5a5a;
+}
+
+@media (max-width: 992px){
+  #logo{
+    display: none;
+  }
+
+  #titre {
+    text-align: left;
+    font-size:1.7em;
+    margin-left:10%;
+  }
+
+
+}
+
+@media (max-width: 850px){
+  #logo{
+    display: block;
+    float:left;
+    margin-left:5%;
+  }
+
+  #titre {
+    display: none;
+  }
+
+
+}
+
+
+

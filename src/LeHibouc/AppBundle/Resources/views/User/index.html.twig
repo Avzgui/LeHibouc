@@ -4,7 +4,7 @@
 
 {% block fos_user_content %}
 
-	 <h2> {{ app.user.username }}'s Books </h2>
+	 <h2> My Books </h2>
 
 	 <p>
 	 	{% if list is empty %}
@@ -26,5 +26,12 @@
 	 		</ul>
 	 	{% endif %}
 	 </p>
+
+	 <h2> My Track (TODO)</h2>
+
+	 <script type="text/javascript" src="dist/Samotraces.js"></script>
+     <script type="text/javascript" src="dist/date_heure.js"></script>
+     <link rel="stylesheet" type="text/css" href="dist/samotraces.css"> 
+     <link rel="stylesheet" type="text/css" href="dist/style.css"> 
  
 {% endblock fos_user_content %}
