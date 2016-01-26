@@ -817,13 +817,15 @@ Samotraces.KTBS.Resource = (function() {
 	 * on success.
 	 */
 	function force_state_refresh() {
-		
+		console.log(this.uri);	
+		//$.getJSON(this.uri,this._on_state_refresh_.bind(this));	
 		$.ajax({
 			url: this.uri,
 			type: 'GET',
 			dataType: 'json',
 			error: (function(jqXHR, textStatus, errorThrown) {
 console.log("error",this);
+console.log(textStatus,errorThrown);
 				Samotraces.log("Cannot refresh "+this.get_resource_type()+" " + this.uri + ": ", textStatus + ' ' + JSON.stringify(errorThrown));
 			}).bind(this),
 			success: this._on_state_refresh_.bind(this),
@@ -1071,6 +1073,7 @@ Samotraces.KTBS.Trace.prototype = {
 			console.log("Error in KTBS:Trace:list_obsels() unknown uri");
 			return false;
 		}
+//		$.getJSON(this.obsel_list_uri,this._on_refresh_obsel_list_.bind(this));
 		$.ajax({
 			url: this.obsel_list_uri,//+'.json',
 			type: 'GET',
@@ -1573,7 +1576,7 @@ console.log(opt);
 					if(opt.mode === "keep") {
 						transformed_trace.create_obsel(o.to_Object());
 					}
-				} else  {
+				} else {
 					if(opt.mode === "remove") {
 						transformed_trace.create_obsel(o.to_Object());
 					}
@@ -1585,7 +1588,7 @@ console.log(opt);
 					if(opt.mode === "keep") {
 						transformed_trace.create_obsel(o.to_Object());
 					}
-				} else  {
+				} else {
 					if(opt.mode === "remove") {
 						transformed_trace.create_obsel(o.to_Object());
 					}
@@ -2183,10 +2186,10 @@ Samotraces.Timer.prototype = {
 Samotraces.UI.Widgets.ImportTrace = function(html_id,trace) {
 	// WidgetBasicTimeForm is a Widget
 	Samotraces.UI.Widgets.Widget.call(this,html_id);
-	Samotraces.EventHandler.call(this);
-	 this.trace = trace;
-     this.html_id=html_id;
-	 this.init_DOM();
+
+	this.trace = trace;
+
+	this.init_DOM();
 };
 
 Samotraces.UI.Widgets.ImportTrace.prototype = {
@@ -2194,19 +2197,8 @@ Samotraces.UI.Widgets.ImportTrace.prototype = {
 
 		var p_element = document.createElement('p');
 
-		//>>mehdi
-        if (this.html_id=='importer')
-		{
-		var text_node = document.createTextNode('Importer une trace: ');
-		p_element.setAttribute("id", "import");
-		}
-		else
-		{
-		 var text_node = document.createTextNode('Importer une transformation: ');
-		 p_element.setAttribute("id", "importtrans");
-		}
+		var text_node = document.createTextNode('Import a trace: ');
 		p_element.appendChild(text_node);
-		
 
 		this.input_element = document.createElement('input');
 		this.input_element.setAttribute('type','file');
@@ -2230,8 +2222,8 @@ Samotraces.UI.Widgets.ImportTrace.prototype = {
 		var button_el = document.createElement('p');
 		var a_el = document.createElement('a');
 		a_el.href = "";
-		//a_el.innerHTML = "toggle console";
-		//button_el.appendChild(a_el);
+		a_el.innerHTML = "toggle console";
+		button_el.appendChild(a_el);
 //		button_el.innerHTML = "<a href=\"\">toggle console</a>";
 		a_el.addEventListener('click',this.on_toggle.bind(this));
 		this.element.appendChild(button_el);
@@ -2239,31 +2231,18 @@ Samotraces.UI.Widgets.ImportTrace.prototype = {
 		this.display_element = document.createElement('div');
 		this.display_element.style.display = 'none';
 		this.element.appendChild(this.display_element);
-         
+
 	},
 
 	on_change: function(e) {
 		files = e.target.files;
 		var title_el,content_el;
-		//>>mehdi
-		html_id=this.html_id ;
-		this.parse_csv.html_id=html_id;
-	   //<<mehdi
-	  
 		for( var i=0, file; file = files[i]; i++) {
 			title_el = document.createElement('h2');
 			title_el.appendChild(document.createTextNode(file.name));
 			this.display_element.appendChild(title_el);
 			content_el = document.createElement('pre');
 			var reader = new FileReader();
-			
-			if (this.html_id=='importer')
-		    {
-			this.trace = new Samotraces.LocalTrace(); // modif pour Mehdi
-			}
-			else{
-			  
-			}
 			reader.onload = (function(el,parser,trace) {
 				return function(e) {
 					parser(e.target.result,trace);
@@ -2274,12 +2253,7 @@ Samotraces.UI.Widgets.ImportTrace.prototype = {
 				console.log(e);
 			};*/
 			reader.readAsText(file);
-			this.display_element.appendChild(content_el);
-			
-		   if (this.html_id=='importer')
-			{			
-			this.trigger('importtrace:newtrace',this.trace);
-			}
+			this.display_element.appendChild(content_el);		
 		}
 	},
 
@@ -2388,8 +2362,6 @@ Samotraces.UI.Widgets.ImportTrace.prototype = {
 		csv = CSVToArray(text,sep);
 		csv.pop(); // remove the last line... Why?...
 	//	console.log('fichier parsé');
-	 if (this.html_id=='importer')
-	    { 
 		csv.map(function(line) {
 			var o_attr = {};
 			o_attr.begin = line.shift();
@@ -2402,80 +2374,14 @@ Samotraces.UI.Widgets.ImportTrace.prototype = {
 			}
 		//	console.log('new obsel');
 			trace.create_obsel(o_attr);
-			
 		});		
-        
-		//>>mehdi
-        list_typeobsel(trace,'add_type');
-		list_typeobsel(trace,'replace_type');
-		list_typeobsel(trace,'fusion_type');
-       //<<mehdi generate list obsel type for any trace
-		
-		}
-		else 
-	    {   
-		    var o_attr = {};
-			o_attr.attributes={};
-			var mes_transformation = JSON.parse(text);
-			mes_transformation.map(function(objet) {
-			    
-				if (objet.evt=='trace:remove:obsel')
-				{
-					objet.obsels_source.map(function(obsource) { 
-						trace.list_obsels().forEach(function(obs){
-							if(obs.id==obsource.idObs)
-							{
-							 trace.remove_obsel(obs);
-							}
-						});
-				  
-				    });
-				
-			    }
-				if (objet.evt=='trace:update:obsel')
-				{
-					objet.obsels_source.map(function(obsource) { 
-						trace.list_obsels().forEach(function(obs){
-							if(obs.id==obsource.idObs)
-							{
-							 trace.remove_obsel(obs);
-							}
-						});
-				 
-				    });
-					
-				     objet.obsels_Transformer.map(function(obsourcetran) { 
-					 
-					 o_attr.begin = obsourcetran.hasbegin_trans;
-					 o_attr.end = obsourcetran.hasend_trans;
-				     o_attr.type = obsourcetran.type_trans;
-				     o_attr.attributes = obsourcetran.attributes_trans;
-				     trace.create_obsel(o_attr);
-				    });
-			    }
-				if (objet.evt=='trace:create:obsel')
-				{
-				  objet.obsels_source.map(function(obsource) { 
-				    o_attr.begin = obsource.hasbegin;
-					 o_attr.end = obsource.hasend;
-				     o_attr.type = obsource.type;
-				     o_attr.attributes = obsource.attributes;
-				     trace.create_obsel(o_attr);
-				    });
-			    }
-		    });		
-	    }
-		
-		//<<mehdi
-		
-		
-		/*      
+/*
 		var output = "";
 		csv.forEach(function(line) {
 			output += line.join(";")+" ";
 		});
 		return output;
-       */
+*/
 	}
 
 };
@@ -3270,13 +3176,13 @@ Samotraces.UI.Widgets.TraceDisplayIcons = function(divId,trace,time_window,optio
 	this.options = {};
 	/**
 	 * VisuConfig is a shortname for the 
-	 * {@link Samotraces.Widgets.TraceDisplayIcons.VisuConfig}
+	 * {@link Samotraces.UI.Widgets.TraceDisplayIcons.VisuConfig}
 	 * object.
 	 * @typedef VisuConfig
-	 * @see Samotraces.Widgets.TraceDisplayIcons.VisuConfig
+	 * @see Samotraces.UI.Widgets.TraceDisplayIcons.VisuConfig
 	 */
 	/**
-	 * @typedef Samotraces.Widgets.TraceDisplayIcons.VisuConfig
+	 * @typedef Samotraces.UI.Widgets.TraceDisplayIcons.VisuConfig
 	 * @property {(number|function)}	[x]		
 	 *     X coordinates of the top-left corner of the 
 	 *     image (default: <code>function(o) {
@@ -3305,7 +3211,7 @@ Samotraces.UI.Widgets.TraceDisplayIcons = function(divId,trace,time_window,optio
 	 * the x position or y position of an icon. This 
 	 * makes it easy to define various types of behaviours.
 	 * Relevant methods to use are:
-	 * link Samotraces.Widgets.TraceDisplayIcons.calculate_x}
+	 * link Samotraces.UI.Widgets.TraceDisplayIcons.calculate_x}
 	 * See tutorial 
 	 * {@tutorial tuto1.3_visualisation_personalisation}
 	 * for more details and examples.

@@ -3,9 +3,7 @@
  **********************/
 
 div.Widget {
-	border: 1px solid grey;
-
-	 /*#484*/
+	border: 1px solid #484;
 	overflow: hidden;
 }
 
@@ -56,26 +54,6 @@ div.Widget-TraceDisplayIcons {
 div.Widget-TraceDisplayIcons svg {
 	width: 100%;
 	height: 100%;
-}
-
-/**********************
-Widget-TraceDisplayObselOccurrence
- **********************/
-
-div.Widget-ObselOccurrences {
-	width: 100%;
-	height: 20px;
-}
-
-div.Widget-ObselOccurrences svg {
-	width: 100%;
-	height: 100%;
-}
-
-div.Widget-ObselOccurrences rect {
-	stroke: black;
-	stroke-width: 1px;
-	fill: black;
 }
 
 /**********************
