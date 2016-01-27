@@ -8,7 +8,7 @@ where everyone who likes to read books can comes, reads and share.
 
 ###Quick Start
 
-If you want to contribuate at Le Hibouc's project just clone the
+If you want to contribute at Le Hibouc's project just clone the
 repository, and run :
 ```
 composer update
