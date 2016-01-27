@@ -9,9 +9,14 @@ where everyone who likes to read books can comes, reads and share.
 ###Quick Start
 
 If you want to contribuate at Le Hibouc's project just clone the
-repository, create a directory call 'web/library' and clone your
-Calibre's library in. If you don't have one just install Calibre
-and download some free e-books ;)
+repository, and run :
+```
+composer update
+
+php app/console doctrine:schema:update --dump-sql
+
+php app/console doctrine:schema:update --force
+```
 
 ###Contributor
 
